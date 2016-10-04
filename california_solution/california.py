@@ -1,65 +1,16 @@
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.optimizers import RMSprop
-from sklearn.cross_validation import train_test_split
-import pandas as pd
 import pickle
-import copy
 import time
+
+from keras.layers import Dense
+from keras.models import Sequential
+from keras.optimizers import RMSprop
 
 
 def load_split_data():
-    file_path = 'data_split_2.p'
+    file_path = 'data_split.p'
     f = open(file_path, 'rb')
     data = pickle.load(f)
     f.close()
-
-    return data
-
-
-def split_train_test_set(df):
-    X_matrix = df.ix[:, 0:7].values
-    Y_matrix = df.ix[:, 8].values
-    return train_test_split(X_matrix, Y_matrix, train_size=0.7)
-
-
-def calculate_X_train_df_mean_std(X_train):
-    X_training_df = pd.DataFrame(data=X_train)
-    mean = []
-    std = []
-
-    for c in X_training_df.columns:
-        mean.append(X_training_df[c].mean())
-        std.append(X_training_df[c].std())
-
-    return mean, std
-
-
-def calculate_Y_train_df_mean_std(Y_train):
-    Y_training_df = pd.DataFrame(data=Y_train)
-    mean = []
-    std = []
-
-    for c in Y_training_df.columns:
-        mean.append(Y_training_df[c].mean())
-        std.append(Y_training_df[c].std())
-
-    return mean, std
-
-
-def normalize_X_data(data, mean, std):
-    data = copy.deepcopy(data)
-    for i in range(len(data)):
-        for j in range(len(data[i])):
-            data[i][j] = (data[i][j] - mean[j]) / std[j]
-
-    return data
-
-
-def normalize_Y_data(data, mean, std):
-    data = copy.deepcopy(data)
-    for i in range(len(data)):
-        data[i] = (data[i] - mean[0]) / std[0]
 
     return data
 
@@ -173,6 +124,6 @@ if __name__ == '__main__':
         'configuration_results': final_result
     }
 
-    f = open('non_normalized_results/california_result_{}_{}_{}_{}.p'.format(N_NEURON_HIDDEN_LAYER, N_HIDDEN_LAYER, MAX_ITER, ALPHA), 'wb')
+    f = open('main_results/california_result_{}_{}_{}_{}.p'.format(N_NEURON_HIDDEN_LAYER, N_HIDDEN_LAYER, MAX_ITER, ALPHA), 'wb')
     pickle.dump(summary, f)
     f.close()

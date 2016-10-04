@@ -1,54 +1,16 @@
-from keras.models import Sequential
-from keras.layers import Dense, Activation
-from keras.optimizers import SGD
-from sklearn.cross_validation import train_test_split, KFold
-import pandas as pd
-import numpy as np
 import pickle
-import copy
 import time
 
-
-def load_data():
-    file_path = 'spambase/spambase.data'
-    df = pd.read_csv(file_path, header=None)
-    df = df.iloc[np.random.permutation(len(df))]
-
-    return df
+from keras.layers import Dense
+from keras.models import Sequential
+from keras.optimizers import SGD
 
 
 def load_split_data():
-    file_path = 'data_split_2.p'
+    file_path = 'data_split.p'
     f = open(file_path, 'rb')
     data = pickle.load(f)
     f.close()
-
-    return data
-
-
-def split_train_test_set(df):
-    X_matrix = df.ix[:, 0:56].values
-    Y_matrix = df.ix[:, 57].values
-    return train_test_split(X_matrix, Y_matrix, train_size=0.7)
-
-
-def calculate_X_train_df_mean_std(X_train):
-    X_training_df = pd.DataFrame(data=X_train)
-    mean = []
-    std = []
-
-    for c in X_training_df.columns:
-        mean.append(X_training_df[c].mean())
-        std.append(X_training_df[c].std())
-
-    return mean, std
-
-
-def normalize_data(data, mean, std):
-    data = copy.deepcopy(data)
-    for i in range(len(data)):
-        for j in range(len(data[i])):
-            data[i][j] = (data[i][j] - mean[j]) / std[j]
 
     return data
 
@@ -91,16 +53,6 @@ def train_model(X, Y, n_hidden_layer=1, n_neuron_hidden_layer=100, max_iter=1000
 
 
 if __name__ == '__main__':
-    # THIS IS ONLY DONE TO SPLIT THE INITIAL DATA, THEN IT WILL BE USED FOR EACH INDEPENDENT EXPERIMENT
-    # df = load_data()
-    # X_train, X_test, Y_train, Y_test = split_train_test_set(df)
-    # X_train_kfolds_indices = KFold(len(X_train), n_folds=3)
-    #
-    # X_train_mean, X_train_std = calculate_X_train_df_mean_std(X_train)
-    # X_train_norm = normalize_data(X_train, X_train_mean, X_train_std)
-    # X_test_norm = normalize_data(X_test, X_train_mean, X_train_std)
-
-
     # LOAD THE SAME DATA SPLIT SO EVERY INDEPENDENT EXPERIMENT IS USING THE SAME TRAINING AND TESTING DATA
     data = load_split_data()
     X_train = data['X_train']

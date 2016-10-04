@@ -68,29 +68,29 @@ if __name__ == '__main__':
     Y_train_std = data['Y_train_std']
     Y_test = data['Y_test']
 
-    target_n_hidden_layer = 1
-    target_n_neuron_hidden_layer = 8
+    target_n_hidden_layer = 2
+    target_n_neuron_hidden_layer = 15
     target_max_iter = 3000
     target_alpha = 0.0001
 
     model, history = train_model(
         X_train_norm,
-        Y_train,
+        Y_train_norm,
         n_hidden_layer=target_n_hidden_layer,
         n_neuron_hidden_layer=target_n_neuron_hidden_layer,
         max_iter=target_max_iter,
         alpha=target_alpha
     )
 
-    final_error = model.evaluate(X_test_norm, Y_test)
+    final_error = model.evaluate(X_test_norm, Y_test_norm)
     predictions = model.predict(X_test_norm)
 
     c = 0
     for i in range(len(Y_test)):
-        if predictions[i] < 0:
+        if ((predictions[i] * Y_train_std) + Y_train_mean) < 0:
             c += 1
 
-        print(predictions[i], Y_test[i])
+        print((predictions[i] * Y_train_std) + Y_train_mean, Y_test[i])
 
     print()
     print()
