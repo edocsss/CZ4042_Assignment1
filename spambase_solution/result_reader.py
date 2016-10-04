@@ -9,7 +9,7 @@ N_HIDDEN_LAYER = [1]
 MAX_ITER = [10000]
 ALPHA = [0.01]
 
-FOLDER_NAME = 'past_results'
+FOLDER_NAME = 'results'
 GRAPH_X_AXIS = 'n_neuron_hidden_layer'
 
 
@@ -129,7 +129,6 @@ def draw_validation_set_loss_graph_overall(config_results, x_axis):
     plt.plot(X, loss)
     plt.xlabel(x_axis)
     plt.ylabel('Error')
-    plt.ylim(0, 0.1)
     plt.title('Validation Error')
     plt.show()
 
@@ -151,7 +150,6 @@ def draw_validation_set_accuracy_graph_overall(config_results, x_axis):
     plt.plot(X, accuracy)
     plt.xlabel(x_axis)
     plt.ylabel('Accuracy')
-    plt.ylim(0.9, 1.05)
     plt.title('Validation Accuracy')
     plt.show()
 
@@ -176,7 +174,6 @@ def draw_training_set_loss_graph_overall(config_results, x_axis):
     plt.plot(X, loss)
     plt.xlabel(x_axis)
     plt.ylabel('Error')
-    plt.ylim(0, 0.1)
     plt.title('Training Error')
     plt.show()
 
@@ -200,7 +197,6 @@ def draw_training_set_accuracy_graph_overall(config_results, x_axis):
     plt.plot(X, accuracy)
     plt.xlabel(x_axis)
     plt.ylabel('Accuracy')
-    plt.ylim(0.9, 1.05)
     plt.title('Training Accuracy')
     plt.show()
 
@@ -235,7 +231,6 @@ def draw_combined_loss_graph_overall(config_results, x_axis):
     plt.xlabel(x_axis)
     plt.ylabel('Error')
     plt.legend()
-    plt.ylim(0, 0.1)
     plt.title('Training and Validation Error')
     plt.show()
 
@@ -269,7 +264,6 @@ def draw_combined_accuracy_graph_overall(config_results, x_axis):
     plt.xlabel(x_axis)
     plt.ylabel('Accuracy')
     plt.legend()
-    plt.ylim(0.9, 1.05)
     plt.title('Training and Validation Accuracy')
     plt.show()
 

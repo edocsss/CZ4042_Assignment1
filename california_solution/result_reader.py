@@ -13,7 +13,7 @@ GRAPH_X_AXIS = 'n_neuron_hidden_layer'
 
 
 def load_result_data():
-    file_path = 'non_normalized_results/california_result_{}_{}_{}_{}.p'.format(N_NEURON_HIDDEN_LAYER, N_HIDDEN_LAYER, MAX_ITER, ALPHA)
+    file_path = 'results/california_result_{}_{}_{}_{}.p'.format(N_NEURON_HIDDEN_LAYER, N_HIDDEN_LAYER, MAX_ITER, ALPHA)
     f = open(file_path, 'rb')
     results = pickle.load(f)
     f.close()
@@ -166,7 +166,6 @@ def draw_combined_loss_graph_overall(config_results, x_axis):
     plt.xlabel(x_axis)
     plt.ylabel('Error')
     plt.legend()
-    plt.ylim(4750000000, 5200000000)
     plt.title('Training and Validation Error')
     plt.show()
 

@@ -124,6 +124,6 @@ if __name__ == '__main__':
         'configuration_results': final_result
     }
 
-    f = open('main_results/california_result_{}_{}_{}_{}.p'.format(N_NEURON_HIDDEN_LAYER, N_HIDDEN_LAYER, MAX_ITER, ALPHA), 'wb')
+    f = open('results/california_result_{}_{}_{}_{}.p'.format(N_NEURON_HIDDEN_LAYER, N_HIDDEN_LAYER, MAX_ITER, ALPHA), 'wb')
     pickle.dump(summary, f)
     f.close()

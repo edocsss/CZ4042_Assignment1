@@ -8,8 +8,7 @@ BASIS_FUNCTION = 'gaussian'
 
 
 def load_result_data():
-    # file_path = os.path.join('results', 'rbf_result_{}_[1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 50, 75, 100, 300, 500, 1000].p'.format(BASIS_FUNCTION))
-    file_path = os.path.join('results', 'rbf_result_{}_[1, 2, 3, 4, 5, 10, 15].p'.format(BASIS_FUNCTION))
+    file_path = os.path.join('results', 'rbf_result_{}_[1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 50, 75, 100, 300, 500, 1000].p'.format(BASIS_FUNCTION))
     f = open(file_path, 'rb')
     data = pickle.load(f)
     f.close()

@@ -121,6 +121,6 @@ if __name__ == '__main__':
         'configuration_results': final_result
     }
 
-    f = open('main_results/spambase_result_same_split_{}_{}_{}_{}.p'.format(N_NEURON_HIDDEN_LAYER, N_HIDDEN_LAYER, MAX_ITER, ALPHA), 'wb')
+    f = open('results/spambase_result_{}_{}_{}_{}.p'.format(N_NEURON_HIDDEN_LAYER, N_HIDDEN_LAYER, MAX_ITER, ALPHA), 'wb')
     pickle.dump(summary, f)
     f.close()

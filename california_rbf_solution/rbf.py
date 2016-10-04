@@ -201,6 +201,6 @@ if __name__:
 
         final_result.append(result)
 
-    f = open('results/rbf_result_thin_plate_{}.p'.format(N_NEURON_HIDDEN_LAYER),'wb')
+    f = open('results/rbf_result_cubic_{}.p'.format(N_NEURON_HIDDEN_LAYER),'wb')
     pickle.dump(final_result, f)
     f.close()

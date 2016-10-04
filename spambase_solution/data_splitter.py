@@ -59,6 +59,6 @@ if __name__ == '__main__':
         'X_test_norm': X_test_norm
     }
 
-    f = open('data_split_2.p', 'wb')
+    f = open('data_split.p', 'wb')
     pickle.dump(data_split, f)
     f.close()
